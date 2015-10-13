@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		462B9B771BCD28D60067CCAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B761BCD28D60067CCAE /* AppDelegate.swift */; };
+		462B9B791BCD28D60067CCAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B781BCD28D60067CCAE /* ViewController.swift */; };
+		462B9B7C1BCD28D60067CCAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462B9B7A1BCD28D60067CCAE /* Main.storyboard */; };
+		462B9B7E1BCD28D60067CCAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462B9B7D1BCD28D60067CCAE /* Assets.xcassets */; };
+		462B9B811BCD28D60067CCAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462B9B7F1BCD28D60067CCAE /* LaunchScreen.storyboard */; };
+		462B9B8C1BCD28D60067CCAE /* Itunes_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B8B1BCD28D60067CCAE /* Itunes_ManagerTests.swift */; };
+		462B9B971BCD28D70067CCAE /* Itunes_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B961BCD28D70067CCAE /* Itunes_ManagerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		462B9B881BCD28D60067CCAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 462B9B6B1BCD28D60067CCAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 462B9B721BCD28D60067CCAE;
+			remoteInfo = "Itunes Manager";
+		};
+		462B9B931BCD28D70067CCAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 462B9B6B1BCD28D60067CCAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 462B9B721BCD28D60067CCAE;
+			remoteInfo = "Itunes Manager";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		462B9B731BCD28D60067CCAE /* Itunes Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Itunes Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		462B9B761BCD28D60067CCAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		462B9B781BCD28D60067CCAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		462B9B7B1BCD28D60067CCAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		462B9B7D1BCD28D60067CCAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		462B9B801BCD28D60067CCAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		462B9B821BCD28D60067CCAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		462B9B871BCD28D60067CCAE /* Itunes ManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Itunes ManagerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		462B9B8B1BCD28D60067CCAE /* Itunes_ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itunes_ManagerTests.swift; sourceTree = "<group>"; };
+		462B9B8D1BCD28D60067CCAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		462B9B921BCD28D70067CCAE /* Itunes ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Itunes ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		462B9B961BCD28D70067CCAE /* Itunes_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itunes_ManagerUITests.swift; sourceTree = "<group>"; };
+		462B9B981BCD28D70067CCAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		462B9B701BCD28D60067CCAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		462B9B841BCD28D60067CCAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		462B9B8F1BCD28D70067CCAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		462B9B6A1BCD28D60067CCAE = {
+			isa = PBXGroup;
+			children = (
+				462B9B751BCD28D60067CCAE /* Itunes Manager */,
+				462B9B8A1BCD28D60067CCAE /* Itunes ManagerTests */,
+				462B9B951BCD28D70067CCAE /* Itunes ManagerUITests */,
+				462B9B741BCD28D60067CCAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		462B9B741BCD28D60067CCAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				462B9B731BCD28D60067CCAE /* Itunes Manager.app */,
+				462B9B871BCD28D60067CCAE /* Itunes ManagerTests.xctest */,
+				462B9B921BCD28D70067CCAE /* Itunes ManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		462B9B751BCD28D60067CCAE /* Itunes Manager */ = {
+			isa = PBXGroup;
+			children = (
+				462B9B761BCD28D60067CCAE /* AppDelegate.swift */,
+				462B9B781BCD28D60067CCAE /* ViewController.swift */,
+				462B9B7A1BCD28D60067CCAE /* Main.storyboard */,
+				462B9B7D1BCD28D60067CCAE /* Assets.xcassets */,
+				462B9B7F1BCD28D60067CCAE /* LaunchScreen.storyboard */,
+				462B9B821BCD28D60067CCAE /* Info.plist */,
+			);
+			path = "Itunes Manager";
+			sourceTree = "<group>";
+		};
+		462B9B8A1BCD28D60067CCAE /* Itunes ManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				462B9B8B1BCD28D60067CCAE /* Itunes_ManagerTests.swift */,
+				462B9B8D1BCD28D60067CCAE /* Info.plist */,
+			);
+			path = "Itunes ManagerTests";
+			sourceTree = "<group>";
+		};
+		462B9B951BCD28D70067CCAE /* Itunes ManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				462B9B961BCD28D70067CCAE /* Itunes_ManagerUITests.swift */,
+				462B9B981BCD28D70067CCAE /* Info.plist */,
+			);
+			path = "Itunes ManagerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		462B9B721BCD28D60067CCAE /* Itunes Manager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 462B9B9B1BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes Manager" */;
+			buildPhases = (
+				462B9B6F1BCD28D60067CCAE /* Sources */,
+				462B9B701BCD28D60067CCAE /* Frameworks */,
+				462B9B711BCD28D60067CCAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Itunes Manager";
+			productName = "Itunes Manager";
+			productReference = 462B9B731BCD28D60067CCAE /* Itunes Manager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		462B9B861BCD28D60067CCAE /* Itunes ManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 462B9B9E1BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes ManagerTests" */;
+			buildPhases = (
+				462B9B831BCD28D60067CCAE /* Sources */,
+				462B9B841BCD28D60067CCAE /* Frameworks */,
+				462B9B851BCD28D60067CCAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				462B9B891BCD28D60067CCAE /* PBXTargetDependency */,
+			);
+			name = "Itunes ManagerTests";
+			productName = "Itunes ManagerTests";
+			productReference = 462B9B871BCD28D60067CCAE /* Itunes ManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		462B9B911BCD28D70067CCAE /* Itunes ManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 462B9BA11BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes ManagerUITests" */;
+			buildPhases = (
+				462B9B8E1BCD28D70067CCAE /* Sources */,
+				462B9B8F1BCD28D70067CCAE /* Frameworks */,
+				462B9B901BCD28D70067CCAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				462B9B941BCD28D70067CCAE /* PBXTargetDependency */,
+			);
+			name = "Itunes ManagerUITests";
+			productName = "Itunes ManagerUITests";
+			productReference = 462B9B921BCD28D70067CCAE /* Itunes ManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		462B9B6B1BCD28D60067CCAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Steven Hertz";
+				TargetAttributes = {
+					462B9B721BCD28D60067CCAE = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					462B9B861BCD28D60067CCAE = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 462B9B721BCD28D60067CCAE;
+					};
+					462B9B911BCD28D70067CCAE = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 462B9B721BCD28D60067CCAE;
+					};
+				};
+			};
+			buildConfigurationList = 462B9B6E1BCD28D60067CCAE /* Build configuration list for PBXProject "Itunes Manager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 462B9B6A1BCD28D60067CCAE;
+			productRefGroup = 462B9B741BCD28D60067CCAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				462B9B721BCD28D60067CCAE /* Itunes Manager */,
+				462B9B861BCD28D60067CCAE /* Itunes ManagerTests */,
+				462B9B911BCD28D70067CCAE /* Itunes ManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		462B9B711BCD28D60067CCAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				462B9B811BCD28D60067CCAE /* LaunchScreen.storyboard in Resources */,
+				462B9B7E1BCD28D60067CCAE /* Assets.xcassets in Resources */,
+				462B9B7C1BCD28D60067CCAE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		462B9B851BCD28D60067CCAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		462B9B901BCD28D70067CCAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		462B9B6F1BCD28D60067CCAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				462B9B791BCD28D60067CCAE /* ViewController.swift in Sources */,
+				462B9B771BCD28D60067CCAE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		462B9B831BCD28D60067CCAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				462B9B8C1BCD28D60067CCAE /* Itunes_ManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		462B9B8E1BCD28D70067CCAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				462B9B971BCD28D70067CCAE /* Itunes_ManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		462B9B891BCD28D60067CCAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 462B9B721BCD28D60067CCAE /* Itunes Manager */;
+			targetProxy = 462B9B881BCD28D60067CCAE /* PBXContainerItemProxy */;
+		};
+		462B9B941BCD28D70067CCAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 462B9B721BCD28D60067CCAE /* Itunes Manager */;
+			targetProxy = 462B9B931BCD28D70067CCAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		462B9B7A1BCD28D60067CCAE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				462B9B7B1BCD28D60067CCAE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		462B9B7F1BCD28D60067CCAE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				462B9B801BCD28D60067CCAE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		462B9B991BCD28D70067CCAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		462B9B9A1BCD28D70067CCAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		462B9B9C1BCD28D70067CCAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Itunes Manager/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.t4e.Itunes-Manager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		462B9B9D1BCD28D70067CCAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Itunes Manager/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.t4e.Itunes-Manager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		462B9B9F1BCD28D70067CCAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Itunes ManagerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.t4e.Itunes-ManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Itunes Manager.app/Itunes Manager";
+			};
+			name = Debug;
+		};
+		462B9BA01BCD28D70067CCAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Itunes ManagerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.t4e.Itunes-ManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Itunes Manager.app/Itunes Manager";
+			};
+			name = Release;
+		};
+		462B9BA21BCD28D70067CCAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Itunes ManagerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.t4e.Itunes-ManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Itunes Manager";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		462B9BA31BCD28D70067CCAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Itunes ManagerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.t4e.Itunes-ManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Itunes Manager";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		462B9B6E1BCD28D60067CCAE /* Build configuration list for PBXProject "Itunes Manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				462B9B991BCD28D70067CCAE /* Debug */,
+				462B9B9A1BCD28D70067CCAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		462B9B9B1BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes Manager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				462B9B9C1BCD28D70067CCAE /* Debug */,
+				462B9B9D1BCD28D70067CCAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		462B9B9E1BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes ManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				462B9B9F1BCD28D70067CCAE /* Debug */,
+				462B9BA01BCD28D70067CCAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		462B9BA11BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes ManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				462B9BA21BCD28D70067CCAE /* Debug */,
+				462B9BA31BCD28D70067CCAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 462B9B6B1BCD28D60067CCAE /* Project object */;
+}

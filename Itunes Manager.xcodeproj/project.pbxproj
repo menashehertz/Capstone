@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		462B9B771BCD28D60067CCAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B761BCD28D60067CCAE /* AppDelegate.swift */; };
-		462B9B791BCD28D60067CCAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B781BCD28D60067CCAE /* ViewController.swift */; };
 		462B9B7C1BCD28D60067CCAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462B9B7A1BCD28D60067CCAE /* Main.storyboard */; };
 		462B9B7E1BCD28D60067CCAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462B9B7D1BCD28D60067CCAE /* Assets.xcassets */; };
 		462B9B811BCD28D60067CCAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462B9B7F1BCD28D60067CCAE /* LaunchScreen.storyboard */; };
 		462B9B8C1BCD28D60067CCAE /* Itunes_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B8B1BCD28D60067CCAE /* Itunes_ManagerTests.swift */; };
 		462B9B971BCD28D70067CCAE /* Itunes_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9B961BCD28D70067CCAE /* Itunes_ManagerUITests.swift */; };
+		462B9BA51BCD35680067CCAE /* ItunesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B9BA41BCD35680067CCAE /* ItunesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		463FAAA31BCDEC800033BD03 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 463FAAA21BCDEC800033BD03 /* Blank52.png */; settings = {ASSET_TAGS = (); }; };
+		4648ED4A1BCDA85B00FAF57E /* MusicAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4648ED491BCDA85B00FAF57E /* MusicAlbum.swift */; settings = {ASSET_TAGS = (); }; };
+		46C3FA8D1BCE7F72003F2936 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C3FA8C1BCE7F72003F2936 /* AlbumTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		462B9B731BCD28D60067CCAE /* Itunes Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Itunes Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		462B9B761BCD28D60067CCAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		462B9B781BCD28D60067CCAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		462B9B7B1BCD28D60067CCAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		462B9B7D1BCD28D60067CCAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		462B9B801BCD28D60067CCAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		462B9B921BCD28D70067CCAE /* Itunes ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Itunes ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		462B9B961BCD28D70067CCAE /* Itunes_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itunes_ManagerUITests.swift; sourceTree = "<group>"; };
 		462B9B981BCD28D70067CCAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		462B9BA41BCD35680067CCAE /* ItunesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItunesTableViewController.swift; sourceTree = "<group>"; };
+		463FAAA21BCDEC800033BD03 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
+		4648ED491BCDA85B00FAF57E /* MusicAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicAlbum.swift; sourceTree = "<group>"; };
+		46C3FA8C1BCE7F72003F2936 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,15 @@
 		462B9B751BCD28D60067CCAE /* Itunes Manager */ = {
 			isa = PBXGroup;
 			children = (
-				462B9B761BCD28D60067CCAE /* AppDelegate.swift */,
-				462B9B781BCD28D60067CCAE /* ViewController.swift */,
 				462B9B7A1BCD28D60067CCAE /* Main.storyboard */,
+				462B9B761BCD28D60067CCAE /* AppDelegate.swift */,
+				463FAAA21BCDEC800033BD03 /* Blank52.png */,
+				462B9BA41BCD35680067CCAE /* ItunesTableViewController.swift */,
+				4648ED491BCDA85B00FAF57E /* MusicAlbum.swift */,
 				462B9B7D1BCD28D60067CCAE /* Assets.xcassets */,
 				462B9B7F1BCD28D60067CCAE /* LaunchScreen.storyboard */,
 				462B9B821BCD28D60067CCAE /* Info.plist */,
+				46C3FA8C1BCE7F72003F2936 /* AlbumTableViewCell.swift */,
 			);
 			path = "Itunes Manager";
 			sourceTree = "<group>";
@@ -229,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				462B9B811BCD28D60067CCAE /* LaunchScreen.storyboard in Resources */,
+				463FAAA31BCDEC800033BD03 /* Blank52.png in Resources */,
 				462B9B7E1BCD28D60067CCAE /* Assets.xcassets in Resources */,
 				462B9B7C1BCD28D60067CCAE /* Main.storyboard in Resources */,
 			);
@@ -255,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				462B9B791BCD28D60067CCAE /* ViewController.swift in Sources */,
 				462B9B771BCD28D60067CCAE /* AppDelegate.swift in Sources */,
+				4648ED4A1BCDA85B00FAF57E /* MusicAlbum.swift in Sources */,
+				462B9BA51BCD35680067CCAE /* ItunesTableViewController.swift in Sources */,
+				46C3FA8D1BCE7F72003F2936 /* AlbumTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +493,7 @@
 				462B9B9D1BCD28D70067CCAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		462B9B9E1BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes ManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +502,7 @@
 				462B9BA01BCD28D70067CCAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		462B9BA11BCD28D70067CCAE /* Build configuration list for PBXNativeTarget "Itunes ManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +511,7 @@
 				462B9BA31BCD28D70067CCAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

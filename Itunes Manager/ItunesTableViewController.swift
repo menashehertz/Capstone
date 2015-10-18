@@ -7,34 +7,127 @@
 //
 
 import UIKit
+import CoreData
 
-class ItunesTableViewController: UITableViewController {
+class ItunesTableViewController: UITableViewController, AlbumPickerViewControllerDelegate {
     
     // an array of dictionaries...
     var songs = [
-        ["title": "Here Comes the Sun", "price": "$12.99", "thumbnailImageURL": "http://is1.mzstatic.com/image/thumb/Music/17/07/36/mzi.ldnorbao.tif/60x60bb-85.jpg", "largeImageURL": "http://is5.mzstatic.com/image/thumb/Music/17/07/36/mzi.ldnorbao.tif/100x100bb-85.jpg", "itemURL": "https://itunes.apple.com/us/album/here-comes-the-sun/id401186200?i=401187150&uo=4", "artistURL": "https://itunes.apple.com/us/artist/the-beatles/id136975?uo=4", "collectionId": 401186200 ],
+        ["title": "c", "price": "$12.99", "thumbnailImageURL": "http://is1.mzstatic.com/image/thumb/Music/17/07/36/mzi.ldnorbao.tif/60x60bb-85.jpg", "largeImageURL": "http://is5.mzstatic.com/image/thumb/Music/17/07/36/mzi.ldnorbao.tif/100x100bb-85.jpg", "itemURL": "https://itunes.apple.com/us/album/here-comes-the-sun/id401186200?i=401187150&uo=4", "artistURL": "https://itunes.apple.com/us/artist/the-beatles/id136975?uo=4", "collectionId": 401186200 ],
         ["title": "Let It Be", "price": "$12.99", "thumbnailImageURL": "http://is1.mzstatic.com/image/thumb/Music/23/f0/1a/mzi.ojxbpuxu.tif/60x60bb-85.jpg", "largeImageURL": "http://is1.mzstatic.com/image/thumb/Music/23/f0/1a/mzi.ojxbpuxu.tif/100x100bb-85.jpg", "itemURL": "https://itunes.apple.com/us/album/let-it-be/id401151866?i=401151904&uo=4", "artistURL": "https://itunes.apple.com/us/artist/the-beatles/id136975?uo=4", "collectionId": 401151866 ],
         ["title": "Hey Jude", "price": "$12.99", "thumbnailImageURL": "http://is1.mzstatic.com/image/thumb/Music/64/3c/dd/mzi.jmeqkgdm.tif/60x60bb-85.jpg", "largeImageURL": "http://is1.mzstatic.com/image/thumb/Music/64/3c/dd/mzi.jmeqkgdm.tif/100x100bb-85.jpg", "itemURL": "https://itunes.apple.com/us/album/hey-jude/id400835735?i=400835962&uo=4", "artistURL": "https://itunes.apple.com/us/artist/the-beatles/id136975?uo=4"	, "collectionId": 400835735 ]
     ]
     
-    var musicAlbumArray = [MusicAlbum]()
+    var musicAlbumArray = [Album]()
+    var albums = [Album]()
+
+    
+    var itunesOne = ItunesAlbums.oneSession
+
+    
+    
+    // MARK: - Core Data Convenience. This will be useful for fetching. And for adding and saving objects as well.
+    
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
+    
+    func fetchAllAlbums() -> [Album] {
+
+        // Create the Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "Album")
+        
+        // Execute the Fetch Request
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as! [Album]
+        } catch  let error as NSError {
+            print("Error in fetchAllAlbums(): \(error)")
+            return [Album]()
+        }
+    }
     
 
+
+    @IBAction func reloadBut(sender: AnyObject) {
+        print("reload table")
+        addAlbum()
+        // tableView?.reloadData()
+    }
+    
+    
+    func addAlbum() {
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("AlbumPickerViewController") as! AlbumPickerViewController
+        
+        controller.delegate = self
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: - Album Picker Delegate
+    
+    func albumPicker(albumPicker: AlbumPickerViewController, didPickAlbum album: Album?) {
+        print("returned from picker with album")
+        
+        if let newAlbum = album {
+            
+            // Debugging output
+            print("picked Album with name: \(newAlbum.collectionName),  id: \(newAlbum.collectionId)")
+            
+            // Check to see if we already have this Album. If so, return.
+            for a in albums {
+                if a.collectionId == newAlbum.collectionId {
+                    return
+                }
+            }
+
+            let dictionary: [String : AnyObject] = [
+                "collectionId" : newAlbum.collectionId,
+                "collectionName" : newAlbum.collectionName,
+                "artworkUrl60" : newAlbum.artworkUrl60 ,
+                "artworkUrl100" : newAlbum.artworkUrl100,
+                "collectionViewUrl" : newAlbum.collectionViewUrl
+            ]
+            
+            let albumToBeAdded = Album(theDict: dictionary, context: sharedContext)
+            
+            // Here we add the Album object that comes from the ActorPickerViewController. Remember
+            // that we cannot do this directly once we incoporate Core Data. The ActorPickerViewController
+            // uses a "scratch" context. It fills its table with actors that have not been picked. We
+            // need to create a new person object that is inserted into the shared context.
+            
+            self.albums.append(albumToBeAdded)
+            // Finally we save the shared context, using the convenience method in
+            // The CoreDataStackManager
+
+            CoreDataStackManager.sharedInstance().saveContext()
+
+            tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        for item in songs {
-            var musicAlbum = MusicAlbum(theDict: item)
-            musicAlbumArray.append(musicAlbum)
-        }
+//        for item in songs {
+//            let musicAlbum = Album(theDict: item)
+//            musicAlbumArray.append(musicAlbum)
+//        }
         
-        print(musicAlbumArray[0].title)
-        
+       // print(musicAlbumArray[0].collectionName)
 
         print("From viewDidLoad")
-        searchItunesFor("smythe")
-
+        albums = fetchAllAlbums()
+        
+        
+        // searchItunesFor("smythe")
+        // ItunesAlbums.oneSession.getAlbumsFromItunes("Beatles")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -70,11 +163,6 @@ class ItunesTableViewController: UITableViewController {
                 
                 guard error == nil else {print(error!.localizedDescription); return}
                 
-                //                if(error != nil) {
-                //                    // If there is an error in the web request, print it to the console
-                //                    print(error!.localizedDescription)
-                //                }
-                
                 // let theString:NSString = NSString(data: data!, encoding: NSASCIIStringEncoding)!
                 // print(theString)
                 
@@ -106,7 +194,6 @@ class ItunesTableViewController: UITableViewController {
         }
     }
     
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -118,17 +205,20 @@ class ItunesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print("in numberOfRowsInSection")
-        return musicAlbumArray.count
+        return albums.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         print("in cell for row at index path")
-        let currentRow = musicAlbumArray[indexPath.row]
+        print("number of albums is", albums.count)
+        print(albums[0].collectionName)
+        let currentRow = albums[indexPath.row]
         
-        if indexPath.row == 1 {
+        
+        if indexPath.row == 9 {
             let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) as! AlbumTableViewCell
-            cell.cellLabel.text = currentRow.title
+            cell.cellLabel.text = currentRow.collectionName
              return cell
            
         } else {
@@ -136,11 +226,11 @@ class ItunesTableViewController: UITableViewController {
 
         // Configure the cell...
         // cell.textLabel?.text = String(indexPath.row)
-        cell.textLabel?.text = currentRow.title
+        cell.textLabel?.text = currentRow.collectionName
         
         cell.imageView?.image = UIImage(named: "Blank52")
         
-        let imageURL = NSURL(string: currentRow.thumbnailImageURL)
+        let imageURL = NSURL(string: currentRow.artworkUrl60)
         if let imageData = NSData(contentsOfURL: imageURL!) {
              cell.imageView?.image = UIImage(data: imageData)
             print("------------------------in data from url")
@@ -154,8 +244,6 @@ class ItunesTableViewController: UITableViewController {
         // let xx = UIImage(contentsOfFile: currentRow.thumbnailImageURL)
         // cell.imageView?.image = xx
         
-
-        
 //        let thumbnailURLString = currentRow.thumbnailImageURL
 //        print("xxx", thumbnailURLString)
 //        let thumbnailURL = NSURL(string: thumbnailURLString)!
@@ -167,10 +255,7 @@ class ItunesTableViewController: UITableViewController {
 //            print("========================= not")
 //        }
 
-
-       
     }
-    
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -232,17 +317,17 @@ class ItunesTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            albums.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
@@ -259,14 +344,25 @@ class ItunesTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "MasterToDetail" {
+            let songTableViewController = segue.destinationViewController as! SongTableViewController
+            print("in prepare for segue")
+            let selectedRow = self.tableView.indexPathForSelectedRow
+            let currentRow = albums[selectedRow!.row]
+            songTableViewController.messageFromCallingScreen = currentRow.collectionName
+            songTableViewController.collectionId = currentRow.collectionId
+            ItunesSongs.oneSession.collectionId  = currentRow.collectionId
+            ItunesSongs.oneSession.currentAlbum = currentRow
+            
+            songTableViewController.navigationItem.title = currentRow.collectionName
+        }
     }
-    */
+    
+
 
 }

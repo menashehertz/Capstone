@@ -1,0 +1,130 @@
+//
+//  SongTableViewController.swift
+//  Itunes Manager
+//
+//  Created by Steven Hertz on 10/14/15.
+//  Copyright © 2015 Steven Hertz. All rights reserved.
+//
+
+import UIKit
+
+class SongTableViewController: UITableViewController {
+    
+    var messageFromCallingScreen = "Was not updated"
+    var collectionId : NSNumber = 0
+    
+    var itunesOne = ItunesSongs.oneSession
+
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // do not get new pictures if there are saved old ones
+
+            ItunesSongs.oneSession.getSongsFromItunes({ (success, errorString) in
+                if success {
+                    print("Getting songs was success")
+                    dispatch_async(dispatch_get_main_queue()){
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    print("From button - didn't get FlickR data")
+                }
+            })
+        }
+    
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print(messageFromCallingScreen)
+        print("This is from ItunesController \(ItunesSongs.oneSession.collectionId)")
+        print("From SongtableViewController about to call the itunesSong to get the songs")
+        
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return itunesOne.listofSongs.count
+    }
+
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("songIdentifier", forIndexPath: indexPath)
+        
+        let currentRow = itunesOne.listofSongs[indexPath.row]
+        cell.textLabel?.text = currentRow.trackName
+
+
+        // Configure the cell...
+
+        return cell
+    }
+
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            itunesOne.listofSongs.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

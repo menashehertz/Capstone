@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 class SongTableViewController: UITableViewController {
     
     var messageFromCallingScreen = "Was not updated"
     var collectionId : NSNumber = 0
+    var album: Album!
     
     var itunesOne = ItunesSongs.oneSession
 
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if album.songs.isEmpty {
         
         // do not get new pictures if there are saved old ones
 
@@ -31,6 +35,10 @@ class SongTableViewController: UITableViewController {
                     print("From button - didn't get FlickR data")
                 }
             })
+        } else {
+            print("did not have to get songs")
+            self.tableView.reloadData()
+        }
         }
     
 
@@ -55,6 +63,16 @@ class SongTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - CoreData Convinience
+    
+    lazy var sharedContext: NSManagedObjectContext = {
+       return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
+    func saveContext() {
+        CoreDataStackManager.sharedInstance().saveContext()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -64,14 +82,14 @@ class SongTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return itunesOne.listofSongs.count
+        return album.songs.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("songIdentifier", forIndexPath: indexPath)
         
-        let currentRow = itunesOne.listofSongs[indexPath.row]
+        let currentRow = album.songs[indexPath.row]
         cell.textLabel?.text = currentRow.trackName
 
 
@@ -92,13 +110,25 @@ class SongTableViewController: UITableViewController {
 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            itunesOne.listofSongs.removeAtIndex(indexPath.row)
+        switch editingStyle {
+        case .Delete:
+            let song = album.songs[indexPath.row]
+            song.album = nil
+            // album.songs.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            sharedContext.deleteObject(song)
+            saveContext()
+            
+        default:
+            break
+        }
+//        if editingStyle == .Delete {
+//            // Delete the row from the data source
+//            itunesOne.listofSongs.removeAtIndex(indexPath.row)
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//        } else if editingStyle == .Insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }    
     }
 
 
@@ -117,14 +147,27 @@ class SongTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier != "MasterToDetail" {
+            let songDetailViewController = segue.destinationViewController as! SongDetailViewController
+            print("in prepare for segue")
+            
+
+            
+            let selectedRow = self.tableView.indexPathForSelectedRow
+            let song = album.songs[selectedRow!.row]
+
+            songDetailViewController.song = song
+//            ItunesSongs.oneSession.collectionId  = currentRow.collectionId
+//            ItunesSongs.oneSession.currentAlbum = currentRow
+            
+            // songTableViewController.navigationItem.title = currentRow.collectionName
+        }
     }
-    */
+    
 
 }

@@ -10,16 +10,17 @@ import UIKit
 
 class AlbumTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellLabel: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var albumImageView: UIImageView!
     
     @IBAction func cellButton(sender: AnyObject) {
         print("button was pressed")
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
-        cellLabel.text = "vavavavav"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

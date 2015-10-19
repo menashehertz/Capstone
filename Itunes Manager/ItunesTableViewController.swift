@@ -77,6 +77,7 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
             // Check to see if we already have this Album. If so, return.
             for a in albums {
                 if a.collectionId == newAlbum.collectionId {
+                    print("It is already added - don't add it again")
                     return
                 }
             }
@@ -114,6 +115,7 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.rowHeight = 85.0
         
 //        for item in songs {
 //            let musicAlbum = Album(theDict: item)
@@ -216,9 +218,22 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
         let currentRow = albums[indexPath.row]
         
         
-        if indexPath.row == 9 {
+        if indexPath.row == 19 {
             let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) as! AlbumTableViewCell
-            cell.cellLabel.text = currentRow.collectionName
+            cell.nameLabel.text = currentRow.collectionName
+            cell.albumImageView.image = UIImage(named: "Blank52")
+            //cell.imageView?.image = UIImage(named: "Blank52")
+            
+            let imageURL = NSURL(string: currentRow.artworkUrl60)
+            if let imageData = NSData(contentsOfURL: imageURL!) {
+                cell.albumImageView.image = UIImage(data: imageData)
+                print("------------------------in data from url")
+            } else {
+                print("========================= not")
+                
+            }
+
+            //cell.cellLabel.text = currentRow.collectionName
              return cell
            
         } else {
@@ -230,7 +245,7 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
         
         cell.imageView?.image = UIImage(named: "Blank52")
         
-        let imageURL = NSURL(string: currentRow.artworkUrl60)
+        let imageURL = NSURL(string: currentRow.artworkUrl100)
         if let imageData = NSData(contentsOfURL: imageURL!) {
              cell.imageView?.image = UIImage(data: imageData)
             print("------------------------in data from url")
@@ -262,7 +277,8 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
         print("We selected a row, Great! Row clicked was \(indexPath.row)")
         
     }
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+    //    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
 //        let album = self.albums[indexPath.row]
 //        
@@ -319,13 +335,32 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
+        switch (editingStyle) {
+        case .Delete:
+            let album = albums[indexPath.row]
+            
+            // Remove the actor from the array
             albums.removeAtIndex(indexPath.row)
+            
+            // Remove the row from the table
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+            // Remove the actor from the context
+            sharedContext.deleteObject(album)
+            CoreDataStackManager.sharedInstance().saveContext()
+        default:
+            break
+        }
+
+        
+        
+//        if editingStyle == .Delete {
+//            // Delete the row from the data source
+//            albums.removeAtIndex(indexPath.row)
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//        } else if editingStyle == .Insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }    
     }
 
 
@@ -356,6 +391,8 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
             let currentRow = albums[selectedRow!.row]
             songTableViewController.messageFromCallingScreen = currentRow.collectionName
             songTableViewController.collectionId = currentRow.collectionId
+            songTableViewController.album = currentRow
+
             ItunesSongs.oneSession.collectionId  = currentRow.collectionId
             ItunesSongs.oneSession.currentAlbum = currentRow
             

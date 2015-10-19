@@ -23,6 +23,8 @@ class ItunesSongs {
     var collectionId : NSNumber = 111
     var listofSongs = [Song]()
     
+    var songNoteArray = [SongNote]()
+    
     
     // MARK: - Core Data Convenience
     

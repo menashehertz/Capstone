@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import MediaPlayer
+import AVKit
 
 class SongDetailViewController: UIViewController {
+    
+//    var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
+//    
+//    var m = AVPlayerViewController()
+//
     
     var song: Song!
     
@@ -26,12 +33,16 @@ class SongDetailViewController: UIViewController {
         
         
         if let indexIntoArray = indexIntoArray {
-            ItunesSongs.oneSession.songNoteArray.removeAtIndex(indexIntoArray)
+            songNoteArray.removeAtIndex(indexIntoArray)
         }
         
         let sn1 = SongNote(trackId: song.trackId, note: notesText.text!)
         
-        ItunesSongs.oneSession.songNoteArray.append(sn1)
+        songNoteArray.append(sn1)
+        
+        // Archive the graph any time this list of actors is displayed.
+        NSKeyedArchiver.archiveRootObject(songNoteArray, toFile: filePath)
+
         
         
     }
@@ -40,7 +51,12 @@ class SongDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       print(song.trackId)
+        
+        // Unarchive the graph when the list is first shown
+        self.songNoteArray = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? [SongNote] ?? [SongNote]()
+
+        
+       print(song.previewUrl)
         
         trackNameLabel.text = song.trackName
         
@@ -64,23 +80,28 @@ class SongDetailViewController: UIViewController {
 //        let indexOfDictTrkValueFromArray = arrayDictTrk.indexOf(song.trackId)
         
         
-        let indexOfDictTrkValue = (ItunesSongs.oneSession.songNoteArray.map({$0.trackId})).indexOf(song.trackId)
+        let indexOfDictTrkValue = (songNoteArray.map({$0.trackId})).indexOf(song.trackId)
         
         if let indexOfDictTrkValue = indexOfDictTrkValue {
-            notesText.text = ItunesSongs.oneSession.songNoteArray[indexOfDictTrkValue].note
+            notesText.text = songNoteArray[indexOfDictTrkValue].note
             indexIntoArray = indexOfDictTrkValue
-            print(ItunesSongs.oneSession.songNoteArray[indexOfDictTrkValue].note)
+            print(songNoteArray[indexOfDictTrkValue].note)
         }
        
-        
-        
-        
-        
-        
-        
-
+  
         // Do any additional setup after loading the view.
     }
+
+    
+    
+    // MARK: - Saving the array. Helper.
+    
+    var filePath : String {
+        let manager = NSFileManager.defaultManager()
+        let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        return url.URLByAppendingPathComponent("notesArray").path!
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

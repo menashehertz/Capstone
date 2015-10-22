@@ -4,7 +4,7 @@
 //
 //  Created by Steven Hertz on 10/19/15.
 //  Copyright © 2015 Steven Hertz. All rights reserved.
-//
+
 
 import UIKit
 import MediaPlayer
@@ -18,8 +18,7 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
     var indexIntoArray : Int?
     var likeLevel: Int!
     var pickerSelection : Int = 0
-    let pickerData = ["No Opinion", "Pretty Bad","Weak","Average","Not bad","Pretty Good", "Great", "Superb"]
-    
+    let pickerData = ["No Opinion", "Pretty Bad","Weak","Average","Not bad","Pretty Good", "Great", "Superb"]    
     var audioPlayer: AVAudioPlayer?
     
     @IBOutlet weak var trackNameLabel: UILabel!

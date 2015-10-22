@@ -57,7 +57,7 @@ class HttpDownloader {
             let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                 if (error == nil) {
                     if let response = response as? NSHTTPURLResponse {
-                        print("response=\(response)")
+                        // print("response=\(response)")
                         if response.statusCode == 200 {
                             if data!.writeToURL(destinationUrl, atomically: true) {
                                 print("file saved [\(destinationUrl.path!)]")

@@ -127,31 +127,16 @@ class ItunesTableViewController: UITableViewController, AlbumPickerViewControlle
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let currentRow = albums[indexPath.row]
         
-        if indexPath.row < 8 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) as! AlbumTableViewCell
-            cell.nameLabel.text = currentRow.collectionName
-            cell.albumImageView.image = UIImage(named: "Blank52")
+        let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) as! AlbumTableViewCell
+        cell.nameLabel.text = currentRow.collectionName
+        cell.albumImageView.image = UIImage(named: "Blank52")
 
-            let imageURL = NSURL(string: currentRow.artworkUrl60)
-            if let imageData = NSData(contentsOfURL: imageURL!) {
-                cell.albumImageView.image = UIImage(data: imageData)
-            }
-            return cell
-        } else {
-            print("We are in identifier reuse and not custom")
-            let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel?.text = currentRow.collectionName
-            cell.imageView?.image = UIImage(named: "Blank52")
-            
-            let imageURL = NSURL(string: currentRow.artworkUrl100)
-            if let imageData = NSData(contentsOfURL: imageURL!) {
-                cell.imageView?.image = UIImage(data: imageData)
-                print("------------------------in data from url")
-            } else {
-                print("========================= not")
-            }
-            return cell
+        let imageURL = NSURL(string: currentRow.artworkUrl60)
+        if let imageData = NSData(contentsOfURL: imageURL!) {
+            cell.albumImageView.image = UIImage(data: imageData)
         }
+        return cell
+        
     }
     
     

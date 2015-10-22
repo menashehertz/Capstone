@@ -86,6 +86,9 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
                 }
             } else {
                 print(errorString)
+                if errorString != "cancelled - error in datatask" {
+                    self.displayError(errorString)
+                }
             }
         })
 
@@ -119,6 +122,21 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
 //        }
     }
     
+    
+    func displayError(errorString: String?) {
+        if let errorString = errorString {
+            dispatch_async(dispatch_get_main_queue()) {
+                let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: {(paramAction:UIAlertAction!) in print("The Done button was tapped - " + paramAction.title!)})
+                
+                alertController.addAction(action)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            }
+        }
+    }
+
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

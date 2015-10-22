@@ -68,7 +68,7 @@ class ItunesSongs {
                      if wrapperType == "track" {
                         print(result["trackName"]!)
                         dispatch_async(dispatch_get_main_queue()){
-                            var newSong = Song(theDict: result, context: self.sharedContext)
+                            let newSong = Song(theDict: result, context: self.sharedContext)
                             newSong.album = self.currentAlbum
                             self.listofSongs.append(newSong)
                         }

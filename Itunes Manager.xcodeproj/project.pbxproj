@@ -103,7 +103,6 @@
 		462B9B6A1BCD28D60067CCAE = {
 			isa = PBXGroup;
 			children = (
-				46530ED41BD159AA0058747A /* Model.xcdatamodeld */,
 				462B9B751BCD28D60067CCAE /* Itunes Manager */,
 				462B9B8A1BCD28D60067CCAE /* Itunes ManagerTests */,
 				462B9B951BCD28D70067CCAE /* Itunes ManagerUITests */,
@@ -206,6 +205,7 @@
 				46530ED21BD157070058747A /* CoreDataStackManager.swift */,
 				462B9B7D1BCD28D60067CCAE /* Assets.xcassets */,
 				463FAAA21BCDEC800033BD03 /* Blank52.png */,
+				46530ED41BD159AA0058747A /* Model.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -626,7 +626,8 @@
 				46530ED51BD159AA0058747A /* Model.xcdatamodel */,
 			);
 			currentVersion = 46530ED51BD159AA0058747A /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

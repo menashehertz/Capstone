@@ -14,10 +14,16 @@ class ItunesSongs {
     
     static let oneSession = ItunesSongs()
     
-    enum Error : ErrorType {
-        case InvalidJson
-        case KeyNotFound
-    }
+//    enum Error : ErrorType {
+//        case InvalidJson
+//        case KeyNotFound
+//    }
+    
+    let baseUrl = "https://itunes.apple.com/lookup?id="
+    let parms: [String : AnyObject] = [
+        "entity": "song",
+        "limit": "9"]
+    
     
     var currentAlbum : Album?
     var collectionId : NSNumber = 111
@@ -40,16 +46,17 @@ class ItunesSongs {
     func getSongsFromItunes(completionHandler: ( success: Bool, errorString: String) -> Void) {
     //func getSongsFromItunes () {
        
-        print("In getSongs function collection id is  \(collectionId)")
-        let urlPath = "https://itunes.apple.com/lookup?id=\(collectionId)&entity=song&limit=9"
-        
+        //let urlPath = "https://itunes.apple.com/lookup?id=\(collectionId)&entity=song&limit=9"
+        let urlPath = "\(baseUrl)\(collectionId)\(escapedParameters(parms))"
+
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            print("Task completed")
-            
-            guard error == nil else {print("In Guard Error - ", error!.localizedDescription); return}
+
+            guard error == nil
+                else {completionHandler(success: false, errorString: error!.localizedDescription); return}
+                //else {print("In Guard Error - ", error!.localizedDescription); return}
             
             // let theString:NSString = NSString(data: data!, encoding: NSASCIIStringEncoding)!
             // print(theString)
@@ -57,16 +64,15 @@ class ItunesSongs {
             do {
                 // Try parsing some valid JSON
                 guard let parsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? [String: AnyObject]
-                    else {print("error in NSJSONSerialization.JSONObjectWithData"); return}
+                    else {completionHandler(success: false, errorString: "error in NSJSONSerialization.JSONObjectWithData"); return}
                 guard let results = parsed["results"] as? [[String : AnyObject]]
-                    else {print("error in converting the dictionary"); return}
+                    else {completionHandler(success: false, errorString: "error in converting the dictionary"); return}
 
                 self.listofSongs.removeAll(keepCapacity: false)
                 for result in results {
-                    //print("\n\n----\n\n")
                     if let wrapperType = result["wrapperType"] as? String {
                      if wrapperType == "track" {
-                        print(result["trackName"]!)
+                        // print(result["trackName"]!)
                         dispatch_async(dispatch_get_main_queue()){
                             let newSong = Song(theDict: result, context: self.sharedContext)
                             newSong.album = self.currentAlbum
@@ -90,6 +96,32 @@ class ItunesSongs {
         // In order to actually make the web request, we need to "resume"
         task.resume()
         
+    }
+    
+    // URL Encoding a dictionary into a parameter string
+    
+    func escapedParameters(parameters: [String : AnyObject]) -> String {
+        
+        var urlVars = [String]()
+        
+        for (key, value) in parameters {
+            
+            // make sure that it is a string value
+            let stringValue = "\(value)"
+            
+            // Escape it
+            let escapedValue = stringValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            
+            // Append it
+            
+            if let unwrappedEscapedValue = escapedValue {
+                urlVars += [key + "=" + "\(unwrappedEscapedValue)"]
+            } else {
+                print("Warning: trouble excaping string \"\(stringValue)\"")
+            }
+        }
+        
+        return (!urlVars.isEmpty ? "&" : "") + urlVars.joinWithSeparator("&")
     }
     
 

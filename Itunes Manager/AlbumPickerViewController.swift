@@ -91,35 +91,7 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
                 }
             }
         })
-
         
-//        let resource = TheMovieDB.Resources.SearchPerson
-//        let parameters = ["query" : searchText]
-        
-//        searchTask = TheMovieDB.sharedInstance().taskForResource(resource, parameters: parameters) { [unowned self] jsonResult, error in
-//            
-//            // Handle the error case
-//            if let error = error {
-//                println("Error searching for actors: \(error.localizedDescription)")
-//                return
-//            }
-//            
-//            // Get a Swift dictionary from the JSON data
-//            if let actorDictionaries = jsonResult.valueForKey("results") as? [[String : AnyObject]] {
-//                self.searchTask = nil
-//                
-//                // Create an array of Person instances from the JSON dictionaries
-//                // If we change this so that it inserts into a context, which context should it be?
-//                self.actors = actorDictionaries.map() {
-//                    Person(dictionary: $0, context: self.sharedContext)
-//                }
-//                
-//                // Reload the table on the main thread
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.tableView!.reloadData()
-//                }
-//            }
-//        }
     }
     
     

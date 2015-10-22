@@ -32,7 +32,8 @@ class SongTableViewController: UITableViewController {
                         self.tableView.reloadData()
                     }
                 } else {
-                    print("From button - didn't get FlickR data")
+                    self.displayError(errorString)
+                    print("From button - didn't get song data")
                 }
             })
         } else {
@@ -41,6 +42,20 @@ class SongTableViewController: UITableViewController {
         }
         }
     
+    
+    func displayError(errorString: String?) {
+        if let errorString = errorString {
+            dispatch_async(dispatch_get_main_queue()) {
+                let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: {(paramAction:UIAlertAction!) in print("The Done button was tapped - " + paramAction.title!)})
+                
+                alertController.addAction(action)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            }
+        }
+    }
 
 
     override func viewDidLoad() {

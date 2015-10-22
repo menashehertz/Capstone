@@ -23,10 +23,8 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
     var audioPlayer: AVAudioPlayer?
     
     @IBOutlet weak var trackNameLabel: UILabel!
-//    @IBOutlet weak var previewUrlLabel: UILabel!
     @IBOutlet weak var notesText: UITextView!
     @IBOutlet weak var myPicker: UIPickerView!
-//    @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     
     /* The delegate - finished playing an audio file */
@@ -41,7 +39,8 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
 
         let url = NSURL(string: song.previewUrl)
         
-        HttpDownloader.loadFileAsync(url!, completion:{(pathToFile: String, error:NSError!) in
+        HttpDownloader.loadFileAsync(url!, completion:{(pathToFile: String, error:NSError!)
+            in
             print("file downloaded: \(pathToFile)")
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             
@@ -56,6 +55,7 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
                     self.audioPlayer = try AVAudioPlayer(data: fileData!)
                     
                     guard let player = self.audioPlayer else{
+                        print("Could not setup the music player")
                         return
                     }
                     
@@ -75,7 +75,7 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
 
     }
     
-    //MARK: - Delegates and data sources
+    //MARK: - Delegates and data sources for PickerView
 
     //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -126,7 +126,9 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return 200
     }
-    
+
+    //MARK: - Life Cycle functions
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         myPicker.selectRow(likeLevel as Int, inComponent: 0, animated: true)
@@ -140,7 +142,7 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
 
         notesText.layer.cornerRadius = 8.0
         notesText.layer.masksToBounds = true
-        notesText.layer.borderColor = UIColor.blueColor().CGColor
+        notesText.layer.borderColor = UIColor.grayColor().CGColor
         notesText.layer.borderWidth = 2.0
         
         // Unarchive the graph when the list is first shown
@@ -153,11 +155,8 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
             notesText.text = songNoteArray[indexOfDictTrkValue].note
             indexIntoArray = indexOfDictTrkValue
             songNote = songNoteArray[indexOfDictTrkValue]
-            print("not setting it to 0 it is ", songNote.likeLevel)
             likeLevel = songNote.likeLevel as Int
-            print(songNoteArray[indexOfDictTrkValue].note)
         } else {
-            print("setting it to 0")
             likeLevel = 0
         }
         print("this is likelevel in viewdidload", likeLevel)
@@ -188,8 +187,12 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -202,12 +205,6 @@ class SongDetailViewController: UIViewController,UIPickerViewDataSource,UIPicker
         let manager = NSFileManager.defaultManager()
         let url = manager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         return url.URLByAppendingPathComponent("notesArray").path!
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

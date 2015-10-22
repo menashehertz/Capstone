@@ -25,11 +25,11 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
     // to return an actor
     var delegate: AlbumPickerViewControllerDelegate?
     
+
     // The most recent data download task. We keep a reference to it so that it can
     // be canceled every time the search text changes
     var searchTask: NSURLSessionDataTask?
     
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,7 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -94,7 +92,7 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
         
     }
     
-    
+
     func displayError(errorString: String?) {
         if let errorString = errorString {
             dispatch_async(dispatch_get_main_queue()) {
@@ -138,7 +136,7 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
         
     }
     
-        //MARK: UITableViewDelegate
+    //MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -153,16 +151,4 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
  
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

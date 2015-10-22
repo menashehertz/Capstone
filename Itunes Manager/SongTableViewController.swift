@@ -17,14 +17,30 @@ class SongTableViewController: UITableViewController {
     
     var itunesOne = ItunesSongs.oneSession
 
+    func displayError(errorString: String?) {
+        if let errorString = errorString {
+            dispatch_async(dispatch_get_main_queue()) {
+                let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: {(paramAction:UIAlertAction!) in print("The Done button was tapped - " + paramAction.title!)})
+                
+                alertController.addAction(action)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            }
+        }
+    }
+
+
+    // MARK: - Life Cycle
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         if album.songs.isEmpty {
-        
-        // do not get new pictures if there are saved old ones
-
+            
+            // do not get new pictures if there are saved old ones
+            
             ItunesSongs.oneSession.getSongsFromItunes({ (success, errorString) in
                 if success {
                     print("Getting songs was success")
@@ -40,23 +56,7 @@ class SongTableViewController: UITableViewController {
             print("did not have to get songs")
             self.tableView.reloadData()
         }
-        }
-    
-    
-    func displayError(errorString: String?) {
-        if let errorString = errorString {
-            dispatch_async(dispatch_get_main_queue()) {
-                let alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: .Alert)
-                let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: {(paramAction:UIAlertAction!) in print("The Done button was tapped - " + paramAction.title!)})
-                
-                alertController.addAction(action)
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-                
-            }
-        }
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +77,7 @@ class SongTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: - CoreData Convinience
     
     lazy var sharedContext: NSManagedObjectContext = {
@@ -86,6 +87,7 @@ class SongTableViewController: UITableViewController {
     func saveContext() {
         CoreDataStackManager.sharedInstance().saveContext()
     }
+    
     
     // MARK: - Table view data source
 
@@ -99,7 +101,6 @@ class SongTableViewController: UITableViewController {
         return album.songs.count
     }
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("songIdentifier", forIndexPath: indexPath)
         
@@ -112,16 +113,7 @@ class SongTableViewController: UITableViewController {
         return cell
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-
+ 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
@@ -145,23 +137,6 @@ class SongTableViewController: UITableViewController {
 //        }    
     }
 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

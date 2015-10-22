@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Itunes Table View Controller-->
+        <!--My Albums-->
         <scene sceneID="NSQ-cU-Osh">
             <objects>
                 <tableViewController id="Jcs-nn-jU5" customClass="ItunesTableViewController" customModule="Itunes_Manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,23 +35,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="84.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53s-e5-jhf">
-                                            <rect key="frame" x="216" y="8" width="46" height="30"/>
-                                            <animations/>
-                                            <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="cellButton:" destination="p1B-f3-ODx" eventType="touchUpInside" id="LIp-BG-GTl"/>
-                                            </connections>
-                                        </button>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ay-KE-W2M">
-                                            <rect key="frame" x="8" y="4" width="69" height="72.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="78" height="84.5"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-P8-ylp" userLabel="Name Label">
-                                            <rect key="frame" x="79" y="30" width="213" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gR-P8-ylp" userLabel="Name Label">
+                                            <rect key="frame" x="80" y="22" width="213" height="39"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -61,7 +53,7 @@
                                 <connections>
                                     <outlet property="albumImageView" destination="9ay-KE-W2M" id="i6D-T4-cE4"/>
                                     <outlet property="nameLabel" destination="3gR-P8-ylp" id="K3a-fY-kHQ"/>
-                                    <segue destination="Jf6-yF-GSQ" kind="push" id="Zk4-vu-UGX"/>
+                                    <segue destination="Jf6-yF-GSQ" kind="push" identifier="getTheDetail" id="Zk4-vu-UGX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,13 +62,7 @@
                             <outlet property="delegate" destination="Jcs-nn-jU5" id="jqk-Dj-K3H"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PoV-la-GFl">
-                        <barButtonItem key="leftBarButtonItem" title="Reload" id="0Me-Dm-gy4">
-                            <connections>
-                                <action selector="reloadBut:" destination="Jcs-nn-jU5" id="01T-an-RzH"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="My Albums" id="PoV-la-GFl"/>
                     <connections>
                         <outlet property="tableView" destination="rJp-dY-ELF" id="IMI-u6-CtR"/>
                     </connections>
@@ -106,16 +92,16 @@
                                     <action selector="cancel" destination="gbk-4V-IVm" eventType="touchUpInside" id="2yJ-NX-t46"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Quc-vI-nty">
-                                <rect key="frame" x="-4" y="64" width="328" height="44"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Quc-vI-nty">
+                                <rect key="frame" x="-4" y="20" width="328" height="44"/>
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="gbk-4V-IVm" id="8UZ-CA-8Oc"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qeN-up-18V">
-                                <rect key="frame" x="-4" y="108" width="328" height="429"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qeN-up-18V">
+                                <rect key="frame" x="-4" y="64" width="328" height="473"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -131,7 +117,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SMC-It-oTX">
@@ -139,7 +125,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -197,15 +183,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ohf-mV-ETF">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="15" y="7" width="26.5" height="16.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3iz-AM-tAX">
-                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="15" y="23.5" width="40.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -232,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="955" y="555"/>
         </scene>
-        <!--Song Detail View Controller-->
+        <!--Rate The Song-->
         <scene sceneID="WOU-J2-srT">
             <objects>
                 <viewController id="hGu-wP-v4B" customClass="SongDetailViewController" customModule="Itunes_Manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -244,42 +230,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH0-x5-dWZ">
-                                <rect key="frame" x="20" y="72" width="229" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH0-x5-dWZ">
+                                <rect key="frame" x="16" y="72" width="288" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ih4-9u-fUC">
-                                <rect key="frame" x="20" y="101" width="229" height="21"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6K-Oy-mkR">
+                                <rect key="frame" x="8" y="305" width="304" height="216"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="notes" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-Go-Oxw">
-                                <rect key="frame" x="20" y="130" width="280" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="WXs-gC-WoS"/>
+                                </constraints>
+                            </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vVA-YX-UVP">
+                                <rect key="frame" x="12" y="118" width="296" height="169"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mza-Cs-cIx">
-                                <rect key="frame" x="12" y="168" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="169" id="csR-52-ocv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zj0-D3-Vkk">
+                                <rect key="frame" x="-4" y="538" width="328" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Add note"/>
+                                <state key="normal" title="Preview The Song"/>
                                 <connections>
-                                    <action selector="saveNotes:" destination="hGu-wP-v4B" eventType="touchUpInside" id="RRd-LN-OpH"/>
+                                    <action selector="preViewTheSong:" destination="hGu-wP-v4B" eventType="touchUpInside" id="6n0-QF-OBk"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="zj0-D3-Vkk" secondAttribute="trailing" constant="-20" id="8V0-WC-xcR"/>
+                            <constraint firstItem="OJB-HC-nI9" firstAttribute="top" secondItem="zj0-D3-Vkk" secondAttribute="bottom" id="ANZ-vY-iaU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C6K-Oy-mkR" secondAttribute="trailing" constant="-8" id="Dk9-b1-F4k"/>
+                            <constraint firstItem="C6K-Oy-mkR" firstAttribute="top" secondItem="vVA-YX-UVP" secondAttribute="bottom" constant="18" id="EQR-eg-zmO"/>
+                            <constraint firstItem="bH0-x5-dWZ" firstAttribute="leading" secondItem="5FW-he-Vwf" secondAttribute="leadingMargin" id="UbS-Yc-Hrj"/>
+                            <constraint firstItem="C6K-Oy-mkR" firstAttribute="leading" secondItem="5FW-he-Vwf" secondAttribute="leadingMargin" constant="-8" id="dbI-Hp-uJ1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vVA-YX-UVP" secondAttribute="trailing" constant="-4" id="e6e-Px-OZt"/>
+                            <constraint firstItem="zj0-D3-Vkk" firstAttribute="leading" secondItem="5FW-he-Vwf" secondAttribute="leadingMargin" constant="-20" id="f7g-Pr-QGt"/>
+                            <constraint firstItem="bH0-x5-dWZ" firstAttribute="top" secondItem="dtI-rw-cxY" secondAttribute="bottom" constant="8" id="mcv-6p-GNY"/>
+                            <constraint firstItem="vVA-YX-UVP" firstAttribute="top" secondItem="bH0-x5-dWZ" secondAttribute="bottom" constant="25.5" id="oVa-q1-eUG"/>
+                            <constraint firstItem="vVA-YX-UVP" firstAttribute="leading" secondItem="5FW-he-Vwf" secondAttribute="leadingMargin" constant="-4" id="qn5-aB-dlN"/>
+                            <constraint firstItem="bH0-x5-dWZ" firstAttribute="trailing" secondItem="5FW-he-Vwf" secondAttribute="trailingMargin" id="x9P-c6-VfD"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8ss-RH-cbh"/>
+                    <navigationItem key="navigationItem" title="Rate The Song" id="8ss-RH-cbh"/>
                     <connections>
-                        <outlet property="notesText" destination="s6J-Go-Oxw" id="c2U-pL-bWh"/>
-                        <outlet property="previewUrlLabel" destination="Ih4-9u-fUC" id="tRm-uK-eeQ"/>
+                        <outlet property="myPicker" destination="C6K-Oy-mkR" id="uTm-pq-bvr"/>
+                        <outlet property="notesText" destination="vVA-YX-UVP" id="ccs-vu-BgF"/>
+                        <outlet property="playButton" destination="zj0-D3-Vkk" id="g9q-GJ-DU8"/>
                         <outlet property="trackNameLabel" destination="bH0-x5-dWZ" id="5hs-9m-MgN"/>
                     </connections>
                 </viewController>
@@ -308,6 +312,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mjf-E8-oCh"/>
+        <segue reference="Zk4-vu-UGX"/>
     </inferredMetricsTieBreakers>
 </document>

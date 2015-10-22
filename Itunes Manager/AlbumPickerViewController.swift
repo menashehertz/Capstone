@@ -35,8 +35,6 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancel")
 
-        // Do any additional setup after loading the view.
-        // itunesOne.setUpSharedContext()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,30 +65,27 @@ class AlbumPickerViewController: UIViewController , UITableViewDelegate, UITable
         
         // Cancel the last task
         if let task = searchTask {
+            print("cancelling task")
             task.cancel()
         }
         
         // If the text is empty we are done
         if searchText == "" {
-            // actors = [Person]()
+            itunesOne.listofAlbums = [Album]()
             tableView?.reloadData()
             objc_sync_exit(self)
             return
         }
         
-        // Start a new one download
-        
-        print(searchText)
-
-        ItunesAlbums.oneSession.getAlbumsFromItunes(searchText, completionHandler: { (success, errorString) in
-        // ItunesSongs.oneSession.getSongsFromItunes({ (success, errorString) in
+        // Get the albums
+        searchTask = ItunesAlbums.oneSession.getAlbumsFromItunes(searchText, completionHandler: { (success, errorString) in
             if success {
-                print("From button - Got the FlickR data")
+                print(" Got the albums")
                 dispatch_async(dispatch_get_main_queue()){
                     self.tableView.reloadData()
                 }
             } else {
-                print("From button - didn't get FlickR data")
+                print(errorString)
             }
         })
 

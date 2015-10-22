@@ -18,8 +18,7 @@ class AlbumTableViewCell: UITableViewCell {
         print("button was pressed")
     }
     override func awakeFromNib() {
-        super.awakeFromNib()
-        
+        super.awakeFromNib()        
         // Initialization code
     }
 

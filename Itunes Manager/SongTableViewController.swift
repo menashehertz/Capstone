@@ -4,7 +4,7 @@
 //
 //  Created by Steven Hertz on 10/14/15.
 //  Copyright © 2015 Steven Hertz. All rights reserved.
-//
+
 
 import UIKit
 import CoreData
@@ -30,7 +30,6 @@ class SongTableViewController: UITableViewController {
             }
         }
     }
-
 
     // MARK: - Life Cycle
     
